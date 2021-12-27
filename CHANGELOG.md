@@ -1,3 +1,66 @@
+# v6.16.2
+- [#2751](https://github.com/xmrig/xmrig/pull/2751) Fixed crash on CPUs supporting VAES and running GCC-compiled xmrig.
+- [#2761](https://github.com/xmrig/xmrig/pull/2761) Fixed broken auto-tuning in GCC Windows build.
+- [#2771](https://github.com/xmrig/xmrig/issues/2771) Fixed environment variables support for GhostRider and KawPow. 
+- [#2769](https://github.com/xmrig/xmrig/pull/2769) Performance fixes:
+  - Fixed several performance bottlenecks introduced in v6.16.1.
+  - Fixed overall GCC-compiled build performance, it's the same speed as MSVC build now.
+  - **Linux builds are up to 10% faster now compared to v6.16.0 GCC build.**
+  - **Windows builds are up to 5% faster now compared to v6.16.0 MSVC build.**
+
+# v6.16.1
+- [#2729](https://github.com/xmrig/xmrig/pull/2729) GhostRider fixes:
+  - Added average hashrate display.
+  - Fixed the number of threads shown at startup.
+  - Fixed `--threads` or `-t` command line option (but `--cpu-max-threads-hint` is recommended to use).
+- [#2738](https://github.com/xmrig/xmrig/pull/2738) GhostRider fixes:
+  - Fixed "difficulty is not a number" error when diff is high on some pools.
+  - Fixed GhostRider compilation when `WITH_KAWPOW=OFF`.
+- [#2740](https://github.com/xmrig/xmrig/pull/2740) Added VAES support for Cryptonight variants **+4% speedup on Zen3**.
+  - VAES instructions are available on Intel Ice Lake/AMD Zen3 and newer CPUs.
+  - +4% speedup on Ryzen 5 5600X.
+
+# v6.16.0
+- [#2712](https://github.com/xmrig/xmrig/pull/2712) **GhostRider algorithm (Raptoreum) support**: read the [RELEASE NOTES](src/crypto/ghostrider/README.md) for quick start guide and performance comparisons.
+- [#2682](https://github.com/xmrig/xmrig/pull/2682) Fixed: use cn-heavy optimization only for Vermeer CPUs.
+- [#2684](https://github.com/xmrig/xmrig/pull/2684) MSR mod: fix for error 183.
+
+# v6.15.3
+- [#2614](https://github.com/xmrig/xmrig/pull/2614) OpenCL fixes for non-AMD platforms.
+- [#2623](https://github.com/xmrig/xmrig/pull/2623) Fixed compiling without kawpow.
+- [#2636](https://github.com/xmrig/xmrig/pull/2636) [#2639](https://github.com/xmrig/xmrig/pull/2639) AstroBWT speedup (up to +35%).
+- [#2646](https://github.com/xmrig/xmrig/pull/2646) Fixed MSVC compilation error.
+
+# v6.15.2
+- [#2606](https://github.com/xmrig/xmrig/pull/2606) Fixed: AstroBWT auto-config ignored `max-threads-hint`.
+- Fixed possible crash on Windows (regression in v6.15.1).
+
+# v6.15.1
+- [#2586](https://github.com/xmrig/xmrig/pull/2586) Fixed Windows 7 compatibility.
+- [#2594](https://github.com/xmrig/xmrig/pull/2594) Added Windows taskbar icon colors.
+
+# v6.15.0
+- [#2548](https://github.com/xmrig/xmrig/pull/2548) Added automatic coin detection for daemon mining.
+- [#2563](https://github.com/xmrig/xmrig/pull/2563) Added new algorithm RandomX Graft (`rx/graft`).
+- [#2565](https://github.com/xmrig/xmrig/pull/2565) AstroBWT: added AVX2 Salsa20 implementation.
+- Added support for new CUDA plugin API (previous API still supported).
+
+# v6.14.1
+- [#2532](https://github.com/xmrig/xmrig/pull/2532) Refactoring: stable (persistent) algorithms IDs.
+- [#2537](https://github.com/xmrig/xmrig/pull/2537) Fixed Termux build.
+
+# v6.14.0
+- [#2484](https://github.com/xmrig/xmrig/pull/2484) Added ZeroMQ support for solo mining.
+- [#2476](https://github.com/xmrig/xmrig/issues/2476) Fixed crash in DMI memory reader.
+- [#2492](https://github.com/xmrig/xmrig/issues/2492) Added missing `--huge-pages-jit` command line option.
+- [#2512](https://github.com/xmrig/xmrig/pull/2512) Added show the number of transactions in pool job.
+
+# v6.13.1
+- [#2468](https://github.com/xmrig/xmrig/pull/2468) Fixed regression in previous version: don't send miner signature during regular mining.
+
+# v6.13.0
+- [#2445](https://github.com/xmrig/xmrig/pull/2445) Added support for solo mining with miner signatures for the upcoming Wownero fork.
+
 # v6.12.2
 - [#2280](https://github.com/xmrig/xmrig/issues/2280) GPU backends are now disabled in benchmark mode.
 - [#2322](https://github.com/xmrig/xmrig/pull/2322) Improved MSR compatibility with recent Linux kernels and updated `randomx_boost.sh`.
